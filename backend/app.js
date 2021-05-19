@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const { mongoURI } = require('./config/config')
 
 // import routes
+const newsRoutes = require('./routes/newsRoutes');
 const UserRoutes = require('./routes/UserRoutes')
 
 
@@ -36,6 +37,10 @@ app.use('/api/user', UserRoutes)
 app.get('/', (req, res) => {
     res.send("Update24x7 Backend is working...")
 })
+
+
+app.use('/news', newsRoutes);
+//app.use('/users', usersRoutes);
 
 
 
