@@ -5,6 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 // import routes
+const UserRoutes = require('./routes/UserRoutes')
 
 
 // db
@@ -28,6 +29,12 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use('/api/user', UserRoutes)
+// add news routes
+
+app.get('/', (req, res) => {
+    res.send("Update24x7 Backend is working...")
+})
 
 
 
