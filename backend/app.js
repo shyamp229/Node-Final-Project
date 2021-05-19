@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const { mongoURI } = require('./config/config')
 
 // import routes
 const UserRoutes = require('./routes/UserRoutes')
@@ -10,7 +11,7 @@ const UserRoutes = require('./routes/UserRoutes')
 
 // db
 mongoose.connect(
-    'mongodb://localhost:27017/NodeProject',
+    mongoURI,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
