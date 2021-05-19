@@ -15,6 +15,9 @@ import { AdminloginComponent } from './components/adminlogin/adminlogin.componen
 import { AdminregisterComponent } from './components/adminregister/adminregister.component';
 import { AddnewsComponent } from './components/addnews/addnews.component';
 import { EditdeletenewsComponent } from './components/editdeletenews/editdeletenews.component';
+import { NewsComponent } from './components/news/news.component';
+import { ErrorComponent } from './components/error/error.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { EditdeletenewsComponent } from './components/editdeletenews/editdeleten
     AdminloginComponent,
     AdminregisterComponent,
     AddnewsComponent,
-    EditdeletenewsComponent
+    EditdeletenewsComponent,
+    NewsComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
