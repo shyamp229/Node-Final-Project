@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/UserSchema');
+const config = require('../config/config');
 
 
 const login = (req, res) => {
@@ -25,7 +26,7 @@ const register = (req, res) => {
     // authenticated user is admin
     if (headerInfo) {
         let token = headerInfo.replace('Bearer ', '');
-        jwt.verify(token, 'secret1234', (err, decoded) => {
+        jwt.verify(token, config.secretKey, (err, decoded) => {
 
             if (err) {
                 return res.status(500).send({ auth: false, message: err });

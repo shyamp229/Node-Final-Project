@@ -18,6 +18,7 @@ import { EditdeletenewsComponent } from './components/editdeletenews/editdeleten
 import { NewsComponent } from './components/news/news.component';
 import { ErrorComponent } from './components/error/error.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
