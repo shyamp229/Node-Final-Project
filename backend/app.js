@@ -3,13 +3,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const { mongoURI } = require('./config/config')
 
 // import routes
 const newsRoutes = require('./routes/newsRoutes');
+const UserRoutes = require('./routes/UserRoutes')
+
 
 // db
 mongoose.connect(
-    'mongodb://localhost:27017/NodeProject',
+    mongoURI,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -28,6 +31,12 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use('/api/user', UserRoutes)
+// add news routes
+
+app.get('/', (req, res) => {
+    res.send("Update24x7 Backend is working...")
+})
 
 
 app.use('/news', newsRoutes);
