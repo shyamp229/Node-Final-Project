@@ -1,0 +1,27 @@
+<div
+  class="card bg-light ml-auto position-sticky"
+  style="max-width: 18rem; bottom: 60px; right: 10px; z-index: 1000"
+>
+  <div class="card-header">Chat</div>
+  <div class="overflow-auto">
+    <div class="card-body" style="height: 200px">
+      <ul class="list-group" id="message-list"></ul>
+    </div>
+  </div>
+  <div class="card-footer p-0 m-0">
+    <div class="row w-100 p-0 m-0">
+      <div class="col-9 m-1">
+        <input
+          class="form-control form-control-sm"
+          type="text"
+          [(ngModel)]="message"
+        />
+      </div>
+      <div class="col-auto mr-1 my-1 ml-0 p-0">
+        <button class="btn btn-primary btn-sm m-0" (click)="SendMessage()">
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

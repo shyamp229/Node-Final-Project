@@ -1,0 +1,56 @@
+<!--<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+  rel="stylesheet"
+/>-->
+<app-main-header></app-main-header>
+<header class="header">
+  <div class="header_logo">Today's Sports News</div>
+  <!--<form class="header_search" action="">
+    <input class="input" type="text" />
+    <input type="submit" />
+  </form>-->
+</header>
+<div class="container-fluid padded-page">
+  <div class="row">
+    <div class="col">
+      <ul class="list-group list-group-flush news-list">
+        <li class="list-group-item" *ngFor="let links of news['hits']">
+          <a href="{{ links.url }}" target="_blank">{{ links.title }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col m-3">
+      <img src="../../../assets/img/basketball.jpg" alt="Basketball" />
+    </div>
+  </div>
+</div>
+<app-main-footer></app-main-footer>
+<!--<script>
+  const searchForm = document.querySelector(".header_search");
+  const input = document.querySelector(".input");
+  const newsList = document.querySelector(".news-list");
+  console.log(newsList);
+
+  searchForm.addEventListener("submit", retrieve);
+  function retrieve(e) {
+    const apiKey = "41e138c9a9c4492eb36751327c2896fd";
+    let category = input.value;
+    let url = `http://newsapi.org/v2/top-headlines?country=us&${category}&apiKey=${apiKey}`;
+
+    this.http.get(url)
+    //fetch(url)
+     // .then((response) => {
+       return response.json();
+      })
+      .then((data) => console.log(data));
+    data.articles.forEach((article) => {
+      let li = document.createElement("li");
+      let a = document.createElement("a");
+      a.setAttribute("href", article.url);
+      a.setAttribute("target", "_blank");
+      a.textContent = {{artice.title}};
+      li.appendChild(a);
+      newsList.appendChild(li);
+    });
+  }
+</script>-->
