@@ -1,0 +1,53 @@
+<app-main-header></app-main-header>
+<div class="container-fluid">
+  <div class="row text-center">
+    <div class="col my-3">
+      <h1>Contact Us</h1>
+    </div>
+  </div>
+</div>
+
+<div class="card bg-light mx-5">
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="row text-center justify-content-center">
+      <div class="form-group col-md-5">
+        <label for="email" class="my-3">Email</label>
+        <input
+          class="form-control form-control-lg"
+          type="email"
+          id="email"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+        />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+          <div *ngIf="f.email.errors.email">
+            Email must be a valid email address (e.g. user@domain.com)
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-5">
+        <label for="query" class="my-3">Query</label>
+        <!--<input class="form-control form-control-lg" type="text" id="query" />-->
+        <textarea
+          id="query"
+          class="form-control"
+          rows="7"
+          formControlName="query"
+          [ngClass]="{ 'is-invalid': submitted && f.query.errors }"
+        ></textarea>
+        <div *ngIf="submitted && f.query.errors" class="invalid-feedback">
+          <div *ngIf="f.query.errors.required">Query must be filled out</div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-4 d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary btn-lg btn-block my-3">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<app-main-footer></app-main-footer>
