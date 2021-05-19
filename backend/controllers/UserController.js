@@ -21,26 +21,29 @@ const login = (req, res) => {
 }
 
 const register = (req, res) => {
-    // let headerInfo = req.headers.authorization;
-    // // authenticated user is admin
-    // if (headerInfo) {
-    //     let token = headerInfo.replace('Bearer', '');
-    //     let result = jwt.verify(token, 'secret1234');
-    //     if (result) {
-    const { name, email, password } = req.body;
-    const user = new User()
-    user.name = name;
-    user.email = email;
-    user.genPasswordHash(password);
-    user.save()
-        .then(newUser => res.json(newUser.genUserObj()))
-        .catch(err => res.status(500).json(err));
-    //     } else {
+    let headerInfo = req.headers.authorization;
+    // authenticated user is admin
+    if (headerInfo) {
+        let token = headerInfo.replace('Bearer ', '');
+        jwt.verify(token, 'secret1234', (err, decoded) => {
 
-    //     }
-    // } else {
-    //     res.status(403).json({ msg: "Invalid permission!" })
-    // }
+            if (err) {
+                return res.status(500).send({ auth: false, message: err });
+            }
+            //req.username = decoded.username;
+            console.log("Decoded: " + JSON.parse(decoded))
+            const { name, email, password } = req.body;
+            const user = new User()
+            user.name = name;
+            user.email = email;
+            user.genPasswordHash(password);
+            user.save()
+                .then(newUser => res.json(newUser.genUserObj()))
+                .catch(err => res.status(500).json(err));
+        });
+    } else {
+        res.status(403).json({ msg: "Invalid token!" })
+    }
 
 }
 
