@@ -1,0 +1,55 @@
+<app-header></app-header>
+<div class="register">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <h1 class="display-4 text-center">Login Form</h1>
+        <p class="lead text-center">Sign into your account</p>
+        <form (ngSubmit)="loginSubmit()">
+          <div class="form-group">
+            <label class="h3"> Email</label>
+            <input
+              type="email"
+              class="form-control form-control-lg"
+              placeholder="Email Address"
+              name="email"
+              [(ngModel)]="login.email"
+            />
+
+            <div class="invalid-feedback d-block">{{ error.email }}</div>
+          </div>
+
+          <div class="form-group">
+            <label class="h3"> Password</label>
+            <input
+              type="password"
+              class="form-control form-control-lg"
+              placeholder="Password"
+              name="password"
+              [(ngModel)]="login.password"
+            />
+            <div class="invalid-feedback d-block">{{ error.password }}</div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <input
+                type="submit"
+                class="btn btn-success btn-block mt-4"
+                value="Login"
+              />
+            </div>
+            <div class="col">
+              <input
+                type="reset"
+                class="btn btn-danger btn-block mt-4"
+                value="Clear"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
