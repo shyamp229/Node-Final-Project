@@ -5,7 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 // import routes
-
+const newsRoutes = require('./routes/newsRoutes');
 
 // db
 mongoose.connect(
@@ -28,6 +28,10 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+
+app.use('/news', newsRoutes);
+//app.use('/users', usersRoutes);
 
 
 
