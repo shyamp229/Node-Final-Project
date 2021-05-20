@@ -1,11 +1,13 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 const User = require('../models/UserSchema')
+const { LoginRequirement, RegisterRequirement } = require('../controllers/ValidationController')
 const { login, register } = require('../controllers/UserController')
 
 
-router.post('/login', login);
-router.post('/register', register)
+// post
+router.post('/login', LoginRequirement, login);
+router.post('/register', RegisterRequirement, register)
 
 
 

@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 // load the user model object
 
-const Query = require("../models/query");
+const { postQuery } = require('../controller/queries')
+
 
 //@route /api/users/test
 //Method : GET
@@ -17,15 +18,6 @@ router.get("/test", (req, res) => {
 // send the response code 201 = success
 // 400 = bad req
 //
-router.post("/", (req, res) => {
-  const newQuery = new Query({
-    email: req.body.email,
-    data: req.body.query,
-  });
-  newQuery
-    .save()
-    .then((query) => res.status(201).json(query))
-    .catch((err) => res.status(400).send(err));
-});
+router.post("/", postQuery);
 
 module.exports = router;

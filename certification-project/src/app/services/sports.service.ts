@@ -15,18 +15,14 @@ import 'rxjs/add/operator/catch';
 })
 export class SportsService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-getNews():Observable<any>
-{
-  let url= `https://hn.algolia.com/api/v1/search_by_date?query=sports&tags=story`;
-  return this.http.get(url);
+  getNews(): Observable<any> {
+    let url = `https://hn.algolia.com/api/v1/search_by_date?query=sports&tags=story`;
+    return this.http.get(url);
 
-  
- // return ( this.http.get('https://hn.algolia.com/api/v1/search_by_date?query=sports&tags=story').map((res:Response)=>res.json()));
-  
-  
-  
 
-}
+    // return ( this.http.get('https://hn.algolia.com/api/v1/search_by_date?query=sports&tags=story').map((res:Response)=>res.json()));
+
+  }
 }

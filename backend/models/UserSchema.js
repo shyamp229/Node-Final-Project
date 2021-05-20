@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const config = require('../config/config');
+
 
 
 const UserSchema = new mongoose.Schema({
@@ -26,7 +28,7 @@ UserSchema.methods.genUserObj = function () {
         email: this.email
     }
 
-    const token = jwt.sign(payload, 'secret1234')
+    const token = jwt.sign(payload, config.secretKey)
     // localStorage.setItem('currUser', token);
 
     return {

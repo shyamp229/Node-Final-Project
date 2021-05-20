@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dbName = require("./config/config").mongoURI;
 console.log(dbName);
-const router = express.Router();
 
 const users = require("./routes/users");
 
@@ -24,7 +23,11 @@ app.use(bodyParser.json());
 // connect to mongodb
 
 mongoose
-  .connect(dbName)
+  .connect(dbName, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: true
+  })
   .then(() => console.log("Mongodb Connected"))
   .catch((err) => console.log(err));
 
