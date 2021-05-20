@@ -3,35 +3,36 @@
 <table class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>Employee ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Salary</th>
-        <th>DOB</th>
-        <th>Email</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>url</th>
+        <th>urlToImage</th>
+        <th>publishedAt</th>
+        <th>timestamp</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngIf="!showEdit">
-        <td>{{employee.employeeId}} </td>
-        <td> {{employee.firstName}}</td>
-        <td> {{employee.LastName}}</td>
-        <td> {{employee.salary}}</td>
-        <td> {{employee.DOB}} </td>
-        <td> {{employee.email}} </td>
+        <td>{{news.title}} </td>
+        <td> {{news.description}}</td>
+        <td> {{news.url}}</td>
+        <td> {{news.urlToImage}}</td>
+        <td> {{news.publishedAt}} </td>
+        <td> {{news.timestamp}} </td>
         <td> <a href="#" (click)="EditEmp()"> <img src="{{editIcon}}"> </a> </td>
       </tr>
      <tr *ngIf="showEdit">
        <td>
-        <input type="text" [(ngModel)]="employee.employeeId"/>
+        <input type="text" [(ngModel)]="news.title"/>
        </td>
-       <td><input type="text" [(ngModel)]="employee.firstName"/></td>
-       <td><input type="text" [(ngModel)]="employee.LastName"/></td>
-       <td><input type="text" [(ngModel)]="employee.salary"/></td>
-       <td><input type="text" [(ngModel)]="employee.DOB"/></td>
-       <td><input type="text" [(ngModel)]="employee.email"/></td>
+       <td><input type="text" [(ngModel)]="news.description"/></td>
+       <td><input type="text" [(ngModel)]="news.url"/></td>
+       <td><input type="text" [(ngModel)]="news.urlToImage"/></td>
+       <td><input type="text" [(ngModel)]="news.publishedAt"/></td>
+       <td><input type="text" [(ngModel)]="news.timestamp"/></td>
        <td><button class="btn btn-sm btn-primary" (click)="UpdateEmp()">Update</button></td>
      </tr>
     </tbody>
   </table>
+
