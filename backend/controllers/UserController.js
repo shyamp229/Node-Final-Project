@@ -32,7 +32,6 @@ const register = (req, res) => {
                 return res.status(500).send({ auth: false, message: err });
             }
             //req.username = decoded.username;
-            console.log("Decoded: " + JSON.parse(decoded))
             const { name, email, password } = req.body;
             const user = new User()
             user.name = name;
