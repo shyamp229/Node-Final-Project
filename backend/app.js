@@ -7,7 +7,8 @@ const { mongoURI } = require('./config/config')
 
 // import routes
 const newsRoutes = require('./routes/newsRoutes');
-const UserRoutes = require('./routes/UserRoutes')
+const UserRoutes = require('./routes/UserRoutes');
+const queriesRoutes = require('./routes/QueriesRoutes');
 
 
 // db
@@ -31,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/api/user', UserRoutes)
 app.use('/api', newsRoutes);
+app.use('/api/query', queriesRoutes);
 
 // add news routes
 
