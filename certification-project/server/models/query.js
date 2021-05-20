@@ -8,13 +8,13 @@ const QuerySchema = new Schema({
     type: String,
     required: true,
   },
-  data: {
+  message: {
     type: String,
     required: true,
   },
 });
 
-module.exports = Query = mongoose.model("queries", QuerySchema);
+module.exports = Query = mongoose.model("queries", QuerySchema, 'queries');
 //                             model is responsible for creating collection
 //                              on UserSchema basis
 //                              name of the collection will be users

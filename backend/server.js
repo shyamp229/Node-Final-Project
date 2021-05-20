@@ -8,12 +8,9 @@ const chatApp = express();
 const PORT = process.env.PORT || 3000;
 const server = http.createServer(app);
 
-const CHAT_PORT = process.env.CHAT_PORT || 5000;
+const CHAT_PORT = process.env.CHAT_PORT || 3050;
 const chatServer = http.createServer(chatApp)
 let io = require("socket.io")(server);
-
-
-
 
 // listen
 server.listen(PORT, (err) => {

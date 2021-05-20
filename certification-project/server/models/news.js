@@ -21,12 +21,13 @@ const NewsSchema = new Schema({
     required: true,
   },
   publishedAt: {
-    type: String,
+    type: Date,
+    default: Date.now(),
     required: true,
   },
 });
 
-module.exports = News = mongoose.model("news", NewsSchema);
+module.exports = News = mongoose.model("news", NewsSchema, 'news');
 //                             model is responsible for creating collection
 //                              on UserSchema basis
 //                              name of the collection will be users
