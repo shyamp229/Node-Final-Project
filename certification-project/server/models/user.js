@@ -18,7 +18,7 @@ const UserSchema = new Schema({
   },
 });
 
-module.exports = User = mongoose.model("users", UserSchema);
+module.exports = User = mongoose.model("users", UserSchema, 'users');
 //                             model is responsible for creating collection
 //                              on UserSchema basis
 //                              name of the collection will be users
