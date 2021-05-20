@@ -1,1 +1,37 @@
 <p>addnews works!</p>
+<p>Not right yet, using scaffold from previous project</p>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Employee ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Salary</th>
+        <th>DOB</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="!showEdit">
+        <td>{{employee.employeeId}} </td>
+        <td> {{employee.firstName}}</td>
+        <td> {{employee.LastName}}</td>
+        <td> {{employee.salary}}</td>
+        <td> {{employee.DOB}} </td>
+        <td> {{employee.email}} </td>
+        <td> <a href="#" (click)="EditEmp()"> <img src="{{editIcon}}"> </a> </td>
+      </tr>
+     <tr *ngIf="showEdit">
+       <td>
+        <input type="text" [(ngModel)]="employee.employeeId"/>
+       </td>
+       <td><input type="text" [(ngModel)]="employee.firstName"/></td>
+       <td><input type="text" [(ngModel)]="employee.LastName"/></td>
+       <td><input type="text" [(ngModel)]="employee.salary"/></td>
+       <td><input type="text" [(ngModel)]="employee.DOB"/></td>
+       <td><input type="text" [(ngModel)]="employee.email"/></td>
+       <td><button class="btn btn-sm btn-primary" (click)="UpdateEmp()">Update</button></td>
+     </tr>
+    </tbody>
+  </table>
