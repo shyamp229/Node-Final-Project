@@ -23,8 +23,6 @@ mongoose.connect(
 
 // init app
 const app = express();
-const PORT = process.env.PORT || 3000;
-
 
 // middleware
 app.use(cors());
