@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {News} from '../news';
 
 
 @Component({
@@ -16,18 +17,20 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit() {
     this.editIcon='assets/edit-512.png'
+/*
+    title: string,
+ 
+    description : string,
+  
+    url : string,
+  
+    urlToImage:number,
+  
+    publishedAt :Date,  
+  
+    timestamp :string
 
-    //this.employee = {
-      // employeeId:2,
-       // firstName:'John',
-       // LastName:'Smith',
-       // salary:10000,
-       // DOB:new Date('11/02/1983'),
-       //email:'john@abc.com'
-
-    //}
-
-
+*/
 
     
   }
