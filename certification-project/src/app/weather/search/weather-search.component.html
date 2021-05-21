@@ -1,13 +1,12 @@
 <section class="weather-search">
     <div class="result">
-        <span class="info" *ngIf="!isCityFound">Search weather here: </span>
+        <span class="info" *ngIf="!isCityFound">Search weather by city: </span>
         <span class="info" *ngIf="isCityFound">City found:</span> {{ data?.name }} {{ data?.sys?.country }}
     </div>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <form #f="ngForm" class="form-inline waves-light" mdbWavesEffect (ngSubmit)="onSubmit(f)">
         <label for="city">
-            <input ngControl="location" type="text" id="city" value="" (input)="onSearchLocation(input.value)" #input required placeholder="search ...">
+            <input ngControl="location" class="form-control mr-sm-2" type="text" id="city" value="" (input)="onSearchLocation(input.value)" #input required placeholder="Select City Here... ">
             <div id="mdev-overlay" *ngIf="isSearching"><div class="mdev-loader rotateLinear">&#9679;&#9679;</div></div>
         </label>
-        <button type="submit">Add City</button>
     </form>
 </section>

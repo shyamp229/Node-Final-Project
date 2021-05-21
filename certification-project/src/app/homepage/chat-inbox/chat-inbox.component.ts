@@ -7,10 +7,11 @@ const SOCKET_ENDPOINT = 'http://localhost:3050';
   templateUrl: './chat-inbox.component.html',
   styleUrls: ['./chat-inbox.component.css'],
 })
+
 export class ChatInboxComponent implements OnInit {
   socket;
   message: string;
-  constructor() {}
+  constructor() { }
   ngOnInit() {
     this.setupSocketConnection();
   }
@@ -25,6 +26,7 @@ export class ChatInboxComponent implements OnInit {
       }
     });
   }
+
   SendMessage() {
     this.socket.emit('message', this.message);
     const element = document.createElement('li');

@@ -49,7 +49,7 @@ export class WeatherService {
 
     searchWeatherInfo(city: string): Observable<any> {
         const APPID = '7a211c68435846ab04153a9d815b09f3';
-        let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=' + APPID + '&units=metric';
+        let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=' + APPID + '&units=imperial';
         return this._http.get(url)
             .map(
                 response => response.json()
@@ -61,3 +61,21 @@ export class WeatherService {
             );
     }
 }
+
+
+/**  getLocation(): void{
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position)=>{
+          const longitude = position.coords.longitude;
+          const latitude = position.coords.latitude;
+          this.callApi(longitude, latitude);
+        });
+    } else {
+       console.log("No support for geolocation")
+    }
+  }
+
+  callApi(Longitude: number, Latitude: number){
+    const url = `https://api-adresse.data.gouv.fr/reverse/?lon=${Longitude}&lat=${Latitude}`
+    //Call API
+  } */
