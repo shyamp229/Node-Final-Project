@@ -49,7 +49,7 @@ export class WeatherService {
 
     searchWeatherInfo(city: string): Observable<any> {
         const APPID = '7a211c68435846ab04153a9d815b09f3';
-        let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=' + APPID + '&units=metric';
+        let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=' + APPID + '&units=imperial';
         return this._http.get(url)
             .map(
                 response => response.json()
