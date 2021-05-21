@@ -1,6 +1,6 @@
 <section class="weather-search">
     <div class="result">
-        <span class="info" *ngIf="!isCityFound">Search weather here: </span>
+        <span class="info" *ngIf="!isCityFound">Search weather by city: </span>
         <span class="info" *ngIf="isCityFound">City found:</span> {{ data?.name }} {{ data?.sys?.country }}
     </div>
     <form #f="ngForm" class="form-inline waves-light" mdbWavesEffect (ngSubmit)="onSubmit(f)">
