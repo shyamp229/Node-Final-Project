@@ -16,7 +16,7 @@ console.log("hello from server");
 const app = express(); // server for rest api purpose.
 const chatApp = express();
 var http = require("http").createServer(chatApp);
-var io = require("socket.io")(http);
+let io = require("socket.io");
 // we can apply the middleware
 app.use(cors());
 app.use(bodyParser.json());
@@ -49,13 +49,25 @@ app.listen(port, () => {
   console.log(`Server is running on ${port}`);
 });
 
-//app.get('/', (req, res) => res.send('hello!'))
-io.on("connection", (socket) => {
-  console.log("a user connected");
-  socket.on("message", (msg) => {
-    //console.log(msg);
-    socket.broadcast.emit("message-broadcast", msg);
+
+// Set up socket.io
+io = require('socket.io')(http);
+
+// Handle socket traffic
+io.on('connection',  (socket) => {
+
+  socket.on('join', function(data){
+    socket.join(data.room);
+    io.emit('new user joined', {user:data.user, message:'has joined  room.'});
   });
+  socket.on('leave', function(data){
+    io.emit('left room', {user:data.user, message:'has left room.'});
+    socket.leave(data.room);
+  });
+
+ socket.on('message',function(data){
+    io.in(data.room).emit('new message', {user:data.user, message:data.message});
+  })
 });
 
 http.listen(3050, () => {
