@@ -1,46 +1,29 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
   <div class="container">
     <a class="navbar-brand">Admin News</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#mobile-nav"
-    >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="mobile-nav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/register" *ngIf="!getLoginStatus()"
-            >Sign Up</a
-          >
+          <a class="nav-link" routerLink="/login" *ngIf="!getLoginStatus()">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/login" *ngIf="!getLoginStatus()"
-            >Login</a
-          >
+          <a class="nav-link" routerLink="/adminHome" *ngIf="getLoginStatus()">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/adminHome" *ngIf="getLoginStatus()"
-            >Home</a
-          >
+          <a class="nav-link" routerLink="/register" *ngIf="getLoginStatus()">Register Users</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/addNews" *ngIf="getLoginStatus()"
-            >Add News</a
-          >
+          <a class="nav-link" routerLink="/addNews" *ngIf="getLoginStatus()">Add News</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/newsList" *ngIf="getLoginStatus()"
-            >News List</a
-          >
+          <a class="nav-link" routerLink="/newsList" *ngIf="getLoginStatus()">News List</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="logout()" *ngIf="getLoginStatus()"
-            >Logout</a
-          >
+          <a class="nav-link" (click)="logout()" *ngIf="getLoginStatus()">Logout</a>
         </li>
       </ul>
     </div>

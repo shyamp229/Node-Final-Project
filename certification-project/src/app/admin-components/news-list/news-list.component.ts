@@ -13,6 +13,7 @@ export class NewsListComponent implements OnInit {
   error = {};
   newsList = [];
   data: any = {};
+  token: any;
   /*public demoData = [
     {
       title: 'therichpost',
@@ -40,10 +41,11 @@ export class NewsListComponent implements OnInit {
   popoverMessage: string = 'Are you sure do you want to delete';
   cancelClicked: boolean = false;
   dtOptions: DataTables.Settings = {};
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.data = jwt_decode(localStorage.getItem('jwtToken'));
+    this.token = localStorage.getItem('jwtToken');
     //console.log(this.data);
     this.displayData();
   }
@@ -66,10 +68,10 @@ export class NewsListComponent implements OnInit {
     }
   }
   deleteNews(id) {
-    this.authService.deleteNews(id).subscribe(
+    this.authService.deleteNews(id, this.token).subscribe(
       (res) => {
         alert('Deleted Successfully');
-        this.router.navigate(['/adminHome']);
+        this.router.navigate(['/newsList']);
       },
       (err) => {
         this.error = err.error;

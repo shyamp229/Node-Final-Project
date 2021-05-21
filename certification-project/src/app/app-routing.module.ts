@@ -39,6 +39,7 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'unauthorised',
@@ -66,6 +67,7 @@ const routes: Routes = [
   {
     path: 'adminHome',
     component: AdminHomePageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
@@ -77,4 +79,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
