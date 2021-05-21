@@ -61,3 +61,21 @@ export class WeatherService {
             );
     }
 }
+
+
+/**  getLocation(): void{
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position)=>{
+          const longitude = position.coords.longitude;
+          const latitude = position.coords.latitude;
+          this.callApi(longitude, latitude);
+        });
+    } else {
+       console.log("No support for geolocation")
+    }
+  }
+
+  callApi(Longitude: number, Latitude: number){
+    const url = `https://api-adresse.data.gouv.fr/reverse/?lon=${Longitude}&lat=${Latitude}`
+    //Call API
+  } */
