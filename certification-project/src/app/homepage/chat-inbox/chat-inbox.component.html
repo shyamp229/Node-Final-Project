@@ -2,23 +2,34 @@
   class="card bg-light ml-auto position-sticky"
   style="max-width: 18rem; bottom: 60px; right: 10px; z-index: 1000"
 >
-  <div class="card-header">Chat</div>
+  <div class="card-header">
+    <div class="col">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="user" class="form-control" id="username" placeholder="Enter username">
+      </div>
+    </div>
+     <div class="col">
+      <div style="margin-top:19px;">
+        <button type="button" class="btn btn-primary" (click)="join()">Join</button>
+        &nbsp; 
+       <button type="button" class="btn btn-secondary" (click)="leave()">Leave</button>
+      </div>
+    </div>
+  </div>
   <div class="overflow-auto">
-    <div class="card-body" style="height: 200px">
-      <ul class="list-group" id="message-list"></ul>
+    <div class="card-body" style="height: 200px; padding:15px;">{{messageArray}}
+      <div *ngFor="let item of messageArray">
+        <span><strong>{{item.user}} : </strong> {{item.message}}</span>
+      </div>
     </div>
   </div>
   <div class="card-footer p-0 m-0">
     <div class="row w-100 p-0 m-0">
       <div class="col-9 m-1">
-        <input
-          class="form-control form-control-sm"
-          type="text"
-          [(ngModel)]="message"
-        />
+        <input type="text" class="form-control" [(ngModel)]="messageText">
       </div>
       <div class="col-auto mr-1 my-1 ml-0 p-0">
-        <button class="btn btn-primary btn-sm m-0" (click)="SendMessage()">
+        <button class="btn btn-primary btn-sm m-0" (click)="sendMessage()">
           Send
         </button>
       </div>
