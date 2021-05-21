@@ -6,7 +6,7 @@ const url = 'http://localhost:3000/api/queries';
   providedIn: 'root',
 })
 export class QueryService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   addQuery(query: Query): any {
     return this.httpClient.post(url, query);

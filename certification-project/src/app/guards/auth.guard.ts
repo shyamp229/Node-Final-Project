@@ -7,12 +7,13 @@ import {
   Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) { }
   data: any = {};
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -22,7 +23,7 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    this.data = localStorage.getItem('jwtToken');
+    this.data = this.authService.getLoginStatus();
     console.log(this.data);
     if (this.data == null) {
       this.router.navigate(['/unauthorised']);

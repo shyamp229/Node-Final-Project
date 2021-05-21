@@ -10,20 +10,26 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   register: Register = new Register();
+  data: any = {};
   error: any = {};
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
-    if (this.authService.getLoginStatus()) {
-      this.router.navigate(['/adminHome']);
+    if (!this.authService.getLoginStatus()) {
+      this.data = {};
+      this.router.navigate(['/login']);
+    } else {
+      this.data = localStorage.getItem('jwtToken');
     }
   }
 
   registerSubmit() {
-    this.authService.registerUser(this.register).subscribe(
+    this.authService.registerUser(this.register, this.data).subscribe(
       (res) => {
-        this.router.navigate(['/login']);
-        console.log(JSON.stringify(res));
+        alert("Successfully registered new admin!")
+        // localStorage.setItem('jwtToken', res.token);
+        this.router.navigate(['/adminHome']);
+        // console.log(JSON.stringify(res));
       },
       (err) => {
         this.error = err.error;

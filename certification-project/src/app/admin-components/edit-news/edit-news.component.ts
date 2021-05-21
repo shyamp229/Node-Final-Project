@@ -16,15 +16,17 @@ export class EditNewsComponent implements OnInit {
     name: '',
     email: '',
   };
+  token: any;
   id: string;
   constructor(
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.data = jwt_decode(localStorage.getItem('jwtToken'));
+    this.token = localStorage.getItem('jwtToken');
     this.id = this.route.snapshot.params.id;
     this.authService.getSingleNews(this.id).subscribe(
       (res) => {
@@ -39,7 +41,7 @@ export class EditNewsComponent implements OnInit {
 
   EditNews() {
     //console.log(this.news);
-    this.authService.updateNews(this.id, this.news).subscribe(
+    this.authService.updateNews(this.id, this.news, this.token).subscribe(
       (res) => {
         this.router.navigate(['/newsList']);
       },

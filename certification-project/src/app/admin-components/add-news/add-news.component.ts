@@ -13,16 +13,22 @@ export class AddNewsComponent implements OnInit {
   news: News = new News();
   error: any = {};
   data: any = {};
-  constructor(private authService: AuthService, private router: Router) {}
+  token: any = {};
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.data = jwt_decode(localStorage.getItem('jwtToken'));
+    this.token = localStorage.getItem('jwtToken');
+    if (!this.authService.getLoginStatus()) {
+      this.router.navigate(['/login'])
+    }
   }
 
   addNews() {
     console.log(this.news);
-    this.authService.addNews(this.news).subscribe(
+    this.authService.addNews(this.news, this.token).subscribe(
       (res) => {
+        console.log(res)
         this.router.navigate(['/newsList']);
       },
       (err) => {

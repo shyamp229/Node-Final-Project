@@ -12,15 +12,16 @@ const headeroptions = {
 })
 export class AuthService implements OnInit {
   data: any = {};
-  api = '/api/users/';
-  newsApi = '/api/news/';
-  constructor(private httpClient: HttpClient) {}
+  api = 'http://localhost:3000/api/users/';
+  newsApi = 'http://localhost:3000/api/news/';
+  constructor(private httpClient: HttpClient) { }
   ngOnInit(): void {
     console.log('hello');
   }
+
   getLoginStatus() {
     this.data = localStorage.getItem('jwtToken');
-    console.log(this.data);
+    // console.log(this.data);
     if (this.data == null) {
       return false;
     } else {
@@ -28,22 +29,22 @@ export class AuthService implements OnInit {
     }
   }
 
-  registerUser(data): Observable<any> {
-    return this.httpClient.post(this.api + 'register', data, headeroptions);
+  registerUser(data, token): Observable<any> {
+    return this.httpClient.post(this.api + 'register', data, { headers: { authorization: token } });
   }
   loginUser(data): Observable<any> {
     return this.httpClient.post(this.api + 'login', data, headeroptions);
   }
-  addNews(data): Observable<any> {
-    return this.httpClient.post(this.newsApi + 'addNews', data, headeroptions);
+  addNews(data, token): Observable<any> {
+    return this.httpClient.post(this.newsApi + 'addNews', data, { headers: { authorization: token } });
   }
   getNewsList(): Observable<any> {
-    return this.httpClient.get(this.newsApi + 'allNews', headeroptions);
+    return this.httpClient.get(this.newsApi + 'allNews');
   }
-  deleteNews(id): Observable<any> {
+  deleteNews(id, token): Observable<any> {
     return this.httpClient.delete(
       this.newsApi + 'deleteNews/' + id,
-      headeroptions
+      { headers: { authorization: token } }
     );
   }
   getSingleNews(id): Observable<any> {
@@ -53,11 +54,11 @@ export class AuthService implements OnInit {
     );
   }
 
-  updateNews(id, data): Observable<any> {
+  updateNews(id, data, token): Observable<any> {
     return this.httpClient.put(
       this.newsApi + 'updateNews/' + id,
       data,
-      headeroptions
+      { headers: { authorization: token } }
     );
   }
   getThreeLatestNews(): Observable<any> {
