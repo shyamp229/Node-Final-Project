@@ -7,11 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./sports.component.css'],
 })
 export class SportsComponent {
-  news = {};
+  news = [];
   constructor(private SportsService: SportsService) {
     this.SportsService.getNews().subscribe((data) => {
       this.news = data
     });
+
+
   }
 
   // ngOnInit(): void {}
