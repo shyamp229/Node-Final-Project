@@ -49,6 +49,8 @@ export class WeatherService {
 
     searchWeatherInfo(city: string): Observable<any> {
         const APPID = '7a211c68435846ab04153a9d815b09f3';
+        //get lon lat
+        //plug lon lat into 
         let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=' + APPID + '&units=imperial';
         return this._http.get(url)
             .map(
@@ -70,6 +72,7 @@ export class WeatherService {
               const aKey = '00da176b1d8e1a229671c3cbb58a7225';
               const exclude = 'minute';//can add more exclusions via excl1,excl2,excl3 no spaces.
               let url = 'https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+ lon +'&exclude='+exclude+'&appid='+aKey
+              //console log
               return this._http.get(url)
             });
         } else {
