@@ -9,6 +9,6 @@ export class QueryService {
   constructor(private httpClient: HttpClient) { }
 
   addQuery(query: Query): any {
-    return this.httpClient.post(url, query);
+    return this.httpClient.post(`${url}/`, query);
   }
 }
