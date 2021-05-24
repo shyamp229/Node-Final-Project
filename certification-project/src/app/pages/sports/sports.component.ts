@@ -9,7 +9,9 @@ import { Component } from '@angular/core';
 export class SportsComponent {
   news = {};
   constructor(private SportsService: SportsService) {
-    this.SportsService.getNews().subscribe((data) => (this.news = data));
+    this.SportsService.getNews().subscribe((data) => {
+      this.news = data
+    });
   }
 
   // ngOnInit(): void {}
