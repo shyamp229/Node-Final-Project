@@ -1,4 +1,4 @@
 module.exports = {
-  mongoURI: "mongodb://127.0.0.1:27017/project",
+  mongoURI: "mongodb://127.0.0.1:27017/NodeProject",
   secretKey: "secret",
 };
