@@ -60,8 +60,24 @@ export class WeatherService {
                 }
             );
     }
-}
 
+    
+    searchWeatherLocation(){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position)=>{
+              const lon = position.coords.longitude;
+              const lat = position.coords.latitude;
+              const aKey = '00da176b1d8e1a229671c3cbb58a7225';
+              const exclude = 'minute';//can add more exclusions via excl1,excl2,excl3 no spaces.
+              let url = 'https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+ lon +'&exclude='+exclude+'&appid='+aKey
+              return this._http.get(url)
+            });
+        } else {
+           console.log("No support for geolocation")
+        }
+      }
+
+    }
 
 /**  getLocation(): void{
     if (navigator.geolocation) {
