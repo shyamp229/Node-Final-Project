@@ -44,8 +44,8 @@ export class NewsListComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.data = jwt_decode(localStorage.getItem('jwtToken'));
-    this.token = localStorage.getItem('jwtToken');
+    this.data = jwt_decode(localStorage.getItem('token'));
+    this.token = localStorage.getItem('token');
     //console.log(this.data);
     this.displayData();
   }
