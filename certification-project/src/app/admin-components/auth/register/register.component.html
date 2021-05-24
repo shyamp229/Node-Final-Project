@@ -3,58 +3,35 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 m-auto">
-        <h1 class="display-4 text-center">Sign up</h1>
-        <p class="lead text-center">Create your account</p>
+        <h1 class="display-4 text-center">Register</h1>
+        <p class="lead text-center">Create new admins</p>
         <form (ngSubmit)="registerSubmit()">
           <div class="form-group">
             <label class="h3"> Name</label>
-            <input
-              type="text"
-              class="form-control form-control-lg"
-              placeholder="Name"
-              name="anem"
-              [(ngModel)]="register.name"
-            />
+            <input type="text" class="form-control form-control-lg" placeholder="Name" name="anem"
+              [(ngModel)]="register.name" />
 
             <div class="invalid-feedback d-block">{{ error.name }}</div>
           </div>
           <div class="form-group">
             <label class="h3"> Email</label>
-            <input
-              type="email"
-              class="form-control form-control-lg"
-              placeholder="Email Address"
-              name="email"
-              [(ngModel)]="register.email"
-            />
+            <input type="email" class="form-control form-control-lg" placeholder="Email Address" name="email"
+              [(ngModel)]="register.email" />
 
             <div class="invalid-feedback d-block">{{ error.email }}</div>
           </div>
           <div class="form-group">
             <label class="h3"> Password</label>
-            <input
-              type="password"
-              class="form-control form-control-lg"
-              placeholder="Password"
-              name="password"
-              [(ngModel)]="register.password"
-            />
+            <input type="password" class="form-control form-control-lg" placeholder="Password" name="password"
+              [(ngModel)]="register.password" />
             <div class="invalid-feedback d-block">{{ error.password }}</div>
           </div>
           <div class="row">
             <div class="col">
-              <input
-                type="submit"
-                class="btn btn-info btn-block mt-4"
-                value="Register"
-              />
+              <input type="submit" class="btn btn-info btn-block mt-4" value="Register" />
             </div>
             <div class="col">
-              <input
-                type="reset"
-                class="btn btn-warning btn-block mt-4"
-                value="Clear"
-              />
+              <input type="reset" class="btn btn-warning btn-block mt-4" value="Clear" />
             </div>
           </div>
         </form>

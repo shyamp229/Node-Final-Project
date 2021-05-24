@@ -14,8 +14,8 @@ const key = require("../config/config");
 // login
 const login = (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
-    console.log(isValid);
-    console.log(errors);
+    // console.log(isValid);
+    // console.log(errors);
     if (!isValid) {
         return res.status(400).json(errors);
     }
@@ -45,7 +45,6 @@ const login = (req, res) => {
                         { expiresIn: 3600 },
                         (err, token) => {
                             res.status(200).json({
-                                success: true,
                                 token
                             });
                         }
@@ -62,8 +61,8 @@ const login = (req, res) => {
 
 const register = (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
-    console.log(isValid);
-    console.log(errors);
+    // console.log(isValid);
+    // console.log(errors);
     if (!isValid) {
         return res.status(400).json(errors);
     }

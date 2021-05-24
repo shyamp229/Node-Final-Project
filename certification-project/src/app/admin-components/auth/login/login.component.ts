@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   login: any = {};
   error: any = {};
   data: any = {};
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     if (this.authService.getLoginStatus()) {
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   loginSubmit() {
     this.authService.loginUser(this.login).subscribe(
       (res) => {
-        console.log(JSON.stringify(res));
+        // console.log(JSON.stringify(res));
 
         this.data = jwt_decode(res.token);
 

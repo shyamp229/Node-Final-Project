@@ -54,7 +54,7 @@ const updateNews = (req, res) => {
 // delete
 const deleteNews = (req, res) => {
     const { id } = req.params;
-    console.log(id);
+    // console.log(id);
     // id = req.param.id
     News.remove({ _id: id })
         .then((data) => {
@@ -69,14 +69,14 @@ const deleteNews = (req, res) => {
 // get
 const getSingleNews = (req, res) => {
     const { id } = req.params;
-    console.log(id);
+    // console.log(id);
     News.findOne({ _id: id })
         .then((news) => {
-            console.log(news);
+            // console.log(news);
             if (!news) {
                 return res.status(404).json({ error: "there is no data" });
             }
-            console.log(JSON.stringify(news));
+            // console.log(JSON.stringify(news));
             res.status(200).json(news);
         })
         .catch((e) => res.status(404).json(e));
@@ -88,7 +88,7 @@ const allNews = (req, res) => {
             if (!news) {
                 return res.status(404).json({ error: "there is no data" });
             }
-            console.log(JSON.stringify(news));
+            // console.log(JSON.stringify(news));
             res.status(200).json(news);
         })
         .catch((e) => res.status(404).json(e));
@@ -102,7 +102,7 @@ const threeLatestNews = (req, res) => {
             if (!news) {
                 return res.status(404).json({ error: "there is no data" });
             }
-            console.log(JSON.stringify(news));
+            // console.log(JSON.stringify(news));
             res.status(200).json(news);
         })
         .catch((e) => res.status(404).json(e));
