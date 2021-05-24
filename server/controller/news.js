@@ -1,7 +1,9 @@
+// Primary functionality of each endpoint is implemented here.
+
 const News = require('../models/news');
 const validateNewsInput = require("../validations/news");
 
-// post
+// post saves new data to mongo db
 const addNews = (req, res) => {
     const { errors, isValid } = validateNewsInput(req.body);
     // console.log(isValid);
@@ -21,7 +23,7 @@ const addNews = (req, res) => {
         .then((news) => res.status(201).json(news))
         .catch(err => res.status(500).json(err));
 }
-// update
+// update one of the data in db
 const updateNews = (req, res) => {
     const { id } = req.params;
     const { errors, isValid } = validateNewsInput(req.body);
@@ -51,7 +53,7 @@ const updateNews = (req, res) => {
         .catch((e) => res.status(404).json(e));
 }
 
-// delete
+// delete: removes a data point in db
 const deleteNews = (req, res) => {
     const { id } = req.params;
     // console.log(id);
@@ -66,7 +68,7 @@ const deleteNews = (req, res) => {
         .catch((e) => res.status(404).json(e));
 }
 
-// get
+// gets one news by id
 const getSingleNews = (req, res) => {
     const { id } = req.params;
     // console.log(id);
@@ -82,6 +84,7 @@ const getSingleNews = (req, res) => {
         .catch((e) => res.status(404).json(e));
 }
 
+// gets all the news in db
 const allNews = (req, res) => {
     News.find()
         .then((news) => {
@@ -94,6 +97,7 @@ const allNews = (req, res) => {
         .catch((e) => res.status(404).json(e));
 }
 
+// gets latest three news by using mongo query
 const threeLatestNews = (req, res) => {
     News.find()
         .limit(3)

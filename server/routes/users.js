@@ -4,11 +4,12 @@ const router = express.Router();
 const { login, register, findUser } = require('../controller/user')
 const { isAuthenticated } = require('../controller/auth')
 
+// using isAuthentiated as middleware before actually functionality occurs
 
-//get
+//gets user by id
 router.get('/:id', isAuthenticated, findUser);
 
-// posts
+// posts: logs user in and registers
 router.post("/login", login);
 router.post("/register", isAuthenticated, register);
 

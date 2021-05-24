@@ -4,20 +4,13 @@ const router = express.Router();
 
 const { postQuery } = require('../controller/queries')
 
-
-//@route /api/users/test
-//Method : GET
-//@Desc : tests user route
-//@access : public
-
+// testing query routes
 router.get("/test", (req, res) => {
   res.json({ msg: "user test works" });
 });
 
-// method : post
-// send the response code 201 = success
-// 400 = bad req
-//
+
+// posts a query to db
 router.post("/", postQuery);
 
 module.exports = router;
