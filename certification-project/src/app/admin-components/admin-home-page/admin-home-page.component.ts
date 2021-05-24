@@ -8,9 +8,9 @@ import jwt_decode from 'jwt-decode';
 })
 export class AdminHomePageComponent implements OnInit {
   data: any = {};
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
-    this.data = jwt_decode(localStorage.getItem('jwtToken'));
+    this.data = jwt_decode(localStorage.getItem('token'));
   }
 }

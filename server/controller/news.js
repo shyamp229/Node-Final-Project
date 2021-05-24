@@ -43,7 +43,7 @@ const updateNews = (req, res) => {
     )
         .then((news) => {
             if (!news) {
-                return res.status(404).json({ error: "there is no data" });
+                return res.status(404).json({ error: "News does not exist" });
             }
             // console.log(JSON.stringify(news));
             res.status(200).json(news);
@@ -59,7 +59,7 @@ const deleteNews = (req, res) => {
     News.remove({ _id: id })
         .then((data) => {
             if (data.deletedCount == 0) {
-                return res.status(400).json({ error: "not found" });
+                return res.status(400).json({ error: "Not found" });
             }
             res.status(200).json(data);
         })
@@ -74,7 +74,7 @@ const getSingleNews = (req, res) => {
         .then((news) => {
             // console.log(news);
             if (!news) {
-                return res.status(404).json({ error: "there is no data" });
+                return res.status(404).json({ error: "News does not exist" });
             }
             // console.log(JSON.stringify(news));
             res.status(200).json(news);
@@ -86,7 +86,7 @@ const allNews = (req, res) => {
     News.find()
         .then((news) => {
             if (!news) {
-                return res.status(404).json({ error: "there is no data" });
+                return res.status(404).json({ error: "News does not exist" });
             }
             // console.log(JSON.stringify(news));
             res.status(200).json(news);
@@ -100,7 +100,7 @@ const threeLatestNews = (req, res) => {
         .sort({ publishedAt: -1 })
         .then((news) => {
             if (!news) {
-                return res.status(404).json({ error: "there is no data" });
+                return res.status(404).json({ error: "News does not exist" });
             }
             // console.log(JSON.stringify(news));
             res.status(200).json(news);

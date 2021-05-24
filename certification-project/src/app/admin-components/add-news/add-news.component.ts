@@ -17,8 +17,8 @@ export class AddNewsComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.data = jwt_decode(localStorage.getItem('jwtToken'));
-    this.token = localStorage.getItem('jwtToken');
+    this.data = jwt_decode(localStorage.getItem('token'));
+    this.token = localStorage.getItem('token');
     if (!this.authService.getLoginStatus()) {
       this.router.navigate(['/login'])
     }

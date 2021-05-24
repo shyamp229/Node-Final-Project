@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
       this.data = {};
       this.router.navigate(['/login']);
     } else {
-      this.data = localStorage.getItem('jwtToken');
+      this.data = localStorage.getItem('token');
     }
   }
 
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     this.authService.registerUser(this.register, this.data).subscribe(
       (res) => {
         alert("Successfully registered new admin!")
-        // localStorage.setItem('jwtToken', res.token);
+        // localStorage.setItem('token', res.token);
         this.router.navigate(['/adminHome']);
         // console.log(JSON.stringify(res));
       },

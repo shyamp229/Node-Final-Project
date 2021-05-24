@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
         this.data = jwt_decode(res.token);
 
-        localStorage.setItem('jwtToken', res.token);
+        localStorage.setItem('token', res.token);
         console.log(JSON.stringify(this.data));
         this.router.navigate(['/adminHome']);
         //alert('successful login');

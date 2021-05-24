@@ -25,13 +25,13 @@ export class EditNewsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.data = jwt_decode(localStorage.getItem('jwtToken'));
-    this.token = localStorage.getItem('jwtToken');
+    this.data = jwt_decode(localStorage.getItem('token'));
+    this.token = localStorage.getItem('token');
     this.id = this.route.snapshot.params.id;
     this.authService.getSingleNews(this.id).subscribe(
       (res) => {
         this.news = res;
-        console.log(this.news);
+        // console.log(this.news);
       },
       (err) => {
         this.error = err.error;
