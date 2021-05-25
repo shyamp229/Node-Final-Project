@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 // create collection details
 // schema creation of collection
 
+// Blueprint for User model
 const UserSchema = new Schema({
   name: {
     type: String,

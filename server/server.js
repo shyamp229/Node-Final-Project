@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dbName = require("./config/config").mongoURI;
-console.log(dbName);
+// console.log(dbName);
 
 const users = require("./routes/users");
 
@@ -11,13 +11,15 @@ const news = require("./routes/news");
 
 const queries = require("./routes/queries");
 
-console.log("hello from server");
+// console.log("hello from server");
 
 const app = express(); // server for rest api purpose.
 const chatApp = express();
 var http = require("http").createServer(chatApp);
 let io = require("socket.io");
 // we can apply the middleware
+
+
 app.use(cors());
 app.use(bodyParser.json());
 // connect to mongodb
@@ -36,12 +38,8 @@ app.get("/", (req, res) => {
 });
 
 // use the routes
-
 app.use("/api/users", users);
-
-console.log("hello");
 app.use("/api/news", news);
-
 app.use("/api/queries", queries);
 
 const port = 3000;
@@ -54,11 +52,12 @@ app.listen(port, () => {
 io = require('socket.io')(http);
 
 // Handle socket traffic
-io.on('connection',  (socket) => {
+io.on('connection', (socket) => {
 
   socket.on('join', (data) => {
+
     socket.join(data.room);
-    io.emit('new user joined', {user:data.user, message:'has joined  room.'});
+    io.emit('new user joined', { user: data.user, message: 'has joined  room.' });
   });
   socket.on('leave', (data) => {
     io.emit('left room', {user:data.user, message:'has left room.'});

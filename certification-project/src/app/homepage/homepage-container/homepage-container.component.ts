@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { News } from 'src/app/models/news';
 import { AuthService } from './../../services/auth.service';
+
 @Component({
   selector: 'app-homepage-container',
   templateUrl: './homepage-container.component.html',
@@ -13,7 +15,7 @@ export class HomepageContainerComponent implements OnInit {
   error = {};
   newsData: string = 'Click On news to get more information regarding news';
   newsTitle: string = 'Title';
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private _http:HttpClient) {}
 
   ngOnInit(): void {
     this.authService.getNewsList().subscribe(
@@ -40,4 +42,15 @@ export class HomepageContainerComponent implements OnInit {
     this.newsData = data;
     this.newsTitle = title;
   }
+
+  getTitle(index) {
+    console.log(this.newsList[index]);
+    if (this.newsList[index] == undefined) {
+      return 'Title Here';
+    } else {
+      return this.newsList[index].title;
+    }
+  }
+
+
 }

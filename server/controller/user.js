@@ -11,7 +11,7 @@ const jwt = require("jsonwebtoken");
 const key = require("../config/config");
 
 
-// login
+// login: check if user exists in our database then return a token else return error
 const login = (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
     // console.log(isValid);
@@ -59,6 +59,7 @@ const login = (req, res) => {
         .catch(err => res.status(500).json(err));
 }
 
+// registers user into our mongo db but first authenicates the user registering is admin
 const register = (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
     // console.log(isValid);
@@ -87,6 +88,20 @@ const register = (req, res) => {
     });
 }
 
+// get user information by id;
+const findUser = (req, res) => {
+    const id = req.params.id
+    // console.log(id)
+    User.findById({ _id: id })
+        .then((user) => {
+            if (!user) {
+                return res.status(404).json({ error: "User not found." })
+            }
+            res.status(200).json(user)
+        })
+        .catch(err => res.status(404).json(err));
+}
 
 
-module.exports = { login, register }
+
+module.exports = { login, register, findUser }

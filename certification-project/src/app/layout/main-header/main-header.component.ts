@@ -11,5 +11,5 @@ export class MainHeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+///header template contains icon, links, and another icon
 }

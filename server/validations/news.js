@@ -1,5 +1,6 @@
 const isEmpty = require("./is-empty");
 const Validator = require("validator");
+// news backend validator
 module.exports = function validationNewsInput(data) {
   let errors = {};
 

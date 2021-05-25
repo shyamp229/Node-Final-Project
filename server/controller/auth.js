@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const config = require('../config/config')
 
-
+// Middleware to user authenticate and verify the user exists in our database.
 const isAuthenticated = (req, res, next) => {
     // perform checks
     let headerInfo = req.headers.authorization;

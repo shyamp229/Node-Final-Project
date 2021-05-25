@@ -35,6 +35,7 @@ import { ChatInboxComponent } from './homepage/chat-inbox/chat-inbox.component';
 import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
 import { SportsService } from './services/sports.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,

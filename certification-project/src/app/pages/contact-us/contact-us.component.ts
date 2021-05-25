@@ -11,34 +11,40 @@ import { Query } from 'src/app/models/query';
 export class ContactUsComponent implements OnInit {
   contactForm: FormGroup;
   submitted = false;
+  errorMsg: string;
   constructor(
     private formBuilder: FormBuilder,
     private service: QueryService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.contactForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      query: ['', Validators.required],
+      message: ['', Validators.required],
     });
   }
   get f() {
     return this.contactForm.controls;
   }
   onSubmit() {
-    this.submitted = true;
-
+    // console.log("contactForm: " + this.contactForm)
+    // console.log("f: " + this.f)
     // stop here if form is invalid
     if (this.contactForm.invalid) {
+      // console.log("invalid contact us form")
       return;
     }
 
     this.service.addQuery(this.contactForm.value).subscribe(
       (data) => {
-        alert('Query submitted successfully.');
+        // alert('Query submitted successfully.');
+        // document.getElementById('successMsg').textContent = "Message sent to Update24x7 staff."
+        this.submitted = true;
       },
       (err) => {
         console.log(err);
+        this.submitted = false;
+        this.errorMsg = err;
       }
     );
 
