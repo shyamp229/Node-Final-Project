@@ -1,8 +1,8 @@
 export class Query {
   email: string;
-  query: string;
-  constructor(email, query) {
+  message: string;
+  constructor(email, message) {
     this.email = email;
-    this.query = query;
+    this.message = message;
   }
 }

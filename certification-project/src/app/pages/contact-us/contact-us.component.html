@@ -8,17 +8,15 @@
 </div>
 
 <div class="card bg-light mx-5">
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-    <div class="row text-center justify-content-center">
-      <div class="form-group col-md-5">
+  <div class="alert alert-success my-3 mx-3" role="alert" *ngIf="submitted">
+    <strong>Message was sent to Update24x7 staff.</strong>
+  </div>
+
+  <form [formGroup]="contactForm" (ngSubmit)="contactForm.valid && onSubmit()">
+    <div class="col text-left justify-content-center">
+      <div class="form-group">
         <label for="email" class="my-3">Email</label>
-        <input
-          class="form-control form-control-lg"
-          type="email"
-          id="email"
-          formControlName="email"
-          [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-        />
+        <input class="form-control" type="email" id="email" formControlName="email" />
         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
           <div *ngIf="f.email.errors.required">Email is required</div>
           <div *ngIf="f.email.errors.email">
@@ -26,24 +24,18 @@
           </div>
         </div>
       </div>
-      <div class="form-group col-md-5">
-        <label for="query" class="my-3">Query</label>
-        <!--<input class="form-control form-control-lg" type="text" id="query" />-->
-        <textarea
-          id="query"
-          class="form-control"
-          rows="7"
-          formControlName="query"
-          [ngClass]="{ 'is-invalid': submitted && f.query.errors }"
-        ></textarea>
-        <div *ngIf="submitted && f.query.errors" class="invalid-feedback">
-          <div *ngIf="f.query.errors.required">Query must be filled out</div>
+      <div class="form-group">
+        <label for="message" class="my-3">Message</label>
+        <!--<input class="form-control form-control-lg" type="text" id="message" />-->
+        <textarea id="message" class="form-control" rows="7" formControlName="message"></textarea>
+        <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+          <div *ngIf="f.message.errors.required">Message must be filled out</div>
         </div>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-4 d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary btn-lg btn-block my-3">
+        <button type="submit" class="btn btn-primary btn-lg btn-block my-3" [disabled]="contactForm.invalid">
           Submit
         </button>
       </div>

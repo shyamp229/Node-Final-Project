@@ -13,7 +13,7 @@ import { WeatherItem } from "../item/weather-item";
 export class WeatherListComponent implements OnInit {
     weatherItems: WeatherItem[];
 
-
+//list of weather objects
     constructor(private _weatherService: WeatherService) {}
 
 

@@ -1,5 +1,8 @@
+// Primary functionality of each endpoint is implemented here.
+
 const Query = require('../models/query')
 
+// saves customer messages to mongo db
 const postQuery = (req, res) => {
     const newQuery = new Query({
         email: req.body.email,

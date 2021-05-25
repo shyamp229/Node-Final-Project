@@ -12,12 +12,17 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void { }
+
+  // constantly check for login status
   ngOnChanges() {
     this.getLoginStatus();
   }
+  // verify is user is logged in
   getLoginStatus() {
     return this.authService.getLoginStatus();
   }
+
+  // logon clears the localStorage
   logout() {
     localStorage.clear();
     this.router.navigate(['/login']);

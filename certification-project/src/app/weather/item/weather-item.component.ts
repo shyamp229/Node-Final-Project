@@ -13,6 +13,7 @@ import { WeatherItem } from "../item/weather-item";
 export class WeatherItemComponent {
     @Input('weatherItem') item: WeatherItem;
 
+    //creates/displays individual weather objects
 
     constructor(private _weatherService: WeatherService) {}
 

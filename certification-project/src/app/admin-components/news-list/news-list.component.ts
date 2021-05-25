@@ -44,12 +44,14 @@ export class NewsListComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.data = jwt_decode(localStorage.getItem('jwtToken'));
-    this.token = localStorage.getItem('jwtToken');
+    // verifies login
+    this.data = jwt_decode(localStorage.getItem('token'));
+    this.token = localStorage.getItem('token');
     //console.log(this.data);
     this.displayData();
   }
 
+  // displays data onto news list page.
   displayData() {
     this.authService.getNewsList().subscribe(
       (data: any[]) => {
@@ -67,10 +69,13 @@ export class NewsListComponent implements OnInit {
       };
     }
   }
+
+  // removes news based on id
   deleteNews(id) {
     this.authService.deleteNews(id, this.token).subscribe(
       (res) => {
         alert('Deleted Successfully');
+        // refreshes the webpage
         this.router.navigate(['/newsList']);
       },
       (err) => {
@@ -78,6 +83,7 @@ export class NewsListComponent implements OnInit {
       }
     );
   }
+  // navigates to editNews page
   editNews(id) {
     this.router.navigate(['/editNews/' + id]);
   }

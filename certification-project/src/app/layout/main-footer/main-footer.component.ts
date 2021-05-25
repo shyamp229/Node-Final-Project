@@ -11,5 +11,5 @@ export class MainFooterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  //Footer template contains icon, link to admin, information, and another icon
 }
