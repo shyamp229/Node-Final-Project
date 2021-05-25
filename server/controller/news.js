@@ -58,7 +58,7 @@ const deleteNews = (req, res) => {
     const { id } = req.params;
     // console.log(id);
     // id = req.param.id
-    News.remove({ _id: id })
+    News.deleteOne({ _id: id })
         .then((data) => {
             if (data.deletedCount == 0) {
                 return res.status(400).json({ error: "Not found" });

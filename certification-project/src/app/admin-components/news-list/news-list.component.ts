@@ -74,7 +74,7 @@ export class NewsListComponent implements OnInit {
   deleteNews(id) {
     this.authService.deleteNews(id, this.token).subscribe(
       (res) => {
-        // alert('Deleted Successfully');
+        alert('Deleted Successfully');
         // refreshes the webpage
         this.router.navigate(['/newsList']);
       },
