@@ -22,12 +22,16 @@ import { WeatherItem } from "../item/weather-item";
     templateUrl: './weather-search.component.html',
     styleUrls: ['./weather-search.component.css']
 })
+//weather searching function
 export class WeatherSearchComponent implements OnInit {
     private searchStream = new Subject<string>();
+    //recieves json
     data:any = {};
+    //initialize booleans to false
     isCityFound:boolean = false;
     isSearching:boolean = false;
 
+    //TO TRACE FLOW OF PROGRAM, START WITH INIT
 
     constructor(private _weatherService:WeatherService) {}
 
@@ -39,6 +43,7 @@ export class WeatherSearchComponent implements OnInit {
     }
 
 
+    //when enter is pressed
     onSubmit(f: NgForm) {
         let cityName: string = this.data.name;
         let cityDescription: string = this.data.weather ? this.data.weather[0].main : '';
@@ -49,6 +54,7 @@ export class WeatherSearchComponent implements OnInit {
         const newItem = new WeatherItem(cityName, cityDescription, cityTemperature, countryCode);
 
 
+        
         if (cityName && !this._weatherService.isExistWeatherItem(newItem)) {
             this._weatherService.addWeatherItem(newItem);
             f.resetForm();
@@ -57,11 +63,13 @@ export class WeatherSearchComponent implements OnInit {
 
 
     ngOnInit():any {
+        //constant listening for search
         this.searchStream
             .debounceTime(500)
             .distinctUntilChanged()
+            //takes in the string for city name
             .switchMap((term:string) => this._weatherService.searchWeatherInfo(term))
-            .subscribe(
+            .subscribe( //looks for match to city name
                 data => {
                     if (data.name) {
                         this.isCityFound = true;
@@ -71,6 +79,7 @@ export class WeatherSearchComponent implements OnInit {
                     }
                     this.isSearching = false;
                     return this.data = data;
+                    //displays city name above search box
                 },
                 error => console.warn(error)
         );

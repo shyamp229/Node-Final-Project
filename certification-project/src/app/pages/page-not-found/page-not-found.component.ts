@@ -11,5 +11,5 @@ export class PageNotFoundComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+//Basic 404 page not found catch
 }

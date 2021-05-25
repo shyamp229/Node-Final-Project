@@ -49,31 +49,51 @@ export class WeatherService {
 
     searchWeatherInfo(city: string): Observable<any> {
         const APPID = '7a211c68435846ab04153a9d815b09f3';
-        //get lon lat
-        //plug lon lat into 
+     
+        //get lattitude and longitude 
+        //store in variables
+        //const lat = position.coords.latitude;
+        //const lon = position.coords.longitude;
+        //api key
+        ////maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY
+        //maps.googleapis.com/maps/api/geocode/json?latlng='+lat+ ','+lon+'&key=YOUR_API_KEY
+
+
+        //takes city, returns weather according to city
         let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=' + APPID + '&units=imperial';
         return this._http.get(url)
             .map(
+                //maps to JSON before return
                 response => response.json()
             )
             .catch(
                 error => {
+                    //returns error
                     return Observable.of<any>(error.json());
                 }
             );
     }
 
     
-    searchWeatherLocation(){
+    getWeatherLocation(){
+        //pulls location if possible
         if (navigator.geolocation) {
+            //if location can be pulled
             navigator.geolocation.getCurrentPosition((position)=>{
-              const lon = position.coords.longitude;
-              const lat = position.coords.latitude;
-              const aKey = '00da176b1d8e1a229671c3cbb58a7225';
-              const exclude = 'minute';//can add more exclusions via excl1,excl2,excl3 no spaces.
-              let url = 'https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+ lon +'&exclude='+exclude+'&appid='+aKey
-              //console log
-              return this._http.get(url)
+                //get lattitude and longitude store in variable
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                //api key
+                const aKey = '00da176b1d8e1a229671c3cbb58a7225';
+                //exclude, makes it easier to control output
+                const exclude = 'minutely,hourly,alerts';//can add more exclusions via excl1,excl2,excl3 no spaces.
+                //test call
+                //https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=minutely,hourly,daily,alerts&appid=00da176b1d8e1a229671c3cbb58a7225
+                //actual call using variables
+                let url = 'https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+ lon +'&exclude='+exclude+'&appid='+aKey
+                console.log(this._http.get(url).subscribe())
+               //let jData[this._http.get(url)];
+                return this._http.get(url)
             });
         } else {
            console.log("No support for geolocation")
