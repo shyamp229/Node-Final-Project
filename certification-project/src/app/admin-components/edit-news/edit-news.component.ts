@@ -25,11 +25,14 @@ export class EditNewsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // verify login
     this.data = jwt_decode(localStorage.getItem('token'));
     this.token = localStorage.getItem('token');
     this.id = this.route.snapshot.params.id;
+    // get news that needs to be edited
     this.authService.getSingleNews(this.id).subscribe(
       (res) => {
+        // save the news to edit.
         this.news = res;
         // console.log(this.news);
       },
@@ -41,11 +44,14 @@ export class EditNewsComponent implements OnInit {
 
   EditNews() {
     //console.log(this.news);
+    // update the news
     this.authService.updateNews(this.id, this.news, this.token).subscribe(
       (res) => {
+        // if success then navigate to newsList
         this.router.navigate(['/newsList']);
       },
       (err) => {
+        // else display error.
         this.error = err.error;
       }
     );

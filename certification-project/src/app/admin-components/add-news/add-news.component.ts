@@ -17,6 +17,7 @@ export class AddNewsComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    // check if user is authenticated
     this.data = jwt_decode(localStorage.getItem('token'));
     this.token = localStorage.getItem('token');
     if (!this.authService.getLoginStatus()) {
@@ -25,13 +26,15 @@ export class AddNewsComponent implements OnInit {
   }
 
   addNews() {
-    console.log(this.news);
+    // console.log(this.news);
     this.authService.addNews(this.news, this.token).subscribe(
       (res) => {
-        console.log(res)
+        // console.log(res)
+        // news saved to db go to newsList page
         this.router.navigate(['/newsList']);
       },
       (err) => {
+        // display error
         this.error = err.error;
       }
     );

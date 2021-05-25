@@ -11,6 +11,7 @@ export class AdminHomePageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // checking if user is auth.
     this.data = jwt_decode(localStorage.getItem('token'));
   }
 }

@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 // create collection details
 // schema creation of collection
 
+// Blueprint for Query 
 const QuerySchema = new Schema({
   email: {
     type: String,

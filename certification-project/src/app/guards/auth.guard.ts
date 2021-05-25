@@ -35,6 +35,7 @@ export class AuthGuard implements CanActivate {
       this.router.navigate(['/unauthorised']);
       return false;
     } else {
+      // check if user exists in db else auth will fail.
       if (this.authService.getSingleUser(this.data.id, this.token)) {
         return true;
       }

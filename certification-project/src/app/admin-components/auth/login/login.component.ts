@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    // check user auth.
     if (this.authService.getLoginStatus()) {
       this.router.navigate(['/adminHome']);
     }
@@ -23,15 +24,16 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(this.login).subscribe(
       (res) => {
         // console.log(JSON.stringify(res));
-
+        // set token to local storage.
         this.data = jwt_decode(res.token);
-
         localStorage.setItem('token', res.token);
-        console.log(JSON.stringify(this.data));
+        // console.log(JSON.stringify(this.data));
+        // navigate to adminHome if login is successful
         this.router.navigate(['/adminHome']);
         //alert('successful login');
       },
       (err) => {
+        // display error
         this.error = err.error;
       }
     );
