@@ -5,12 +5,12 @@
   <div class="card-header">
     <div class="col">
       <div class="form-group">
-        <input type="text" [(ngModel)]="user" class="form-control" id="username" placeholder="Enter username">
+        <input type="text" [(ngModel)]="user" class="form-control" id="username" placeholder="Enter Your Name">
       </div>
     </div>
      <div class="col">
       <div style="margin-top:19px;">
-        <button type="button" class="btn btn-primary" (click)="join()">Join</button>
+        <button type="button" class="btn btn-dark" (click)="join()">Join</button>
         &nbsp; 
        <button type="button" class="btn btn-secondary" (click)="leave()">Leave</button>
       </div>
@@ -29,7 +29,7 @@
         <input type="text" class="form-control" [(ngModel)]="messageText">
       </div>
       <div class="col-auto mr-1 my-1 ml-0 p-0">
-        <button class="btn btn-primary btn-sm m-0" (click)="sendMessage()">
+        <button class="btn btn-dark btn-sm m-0" (click)="sendMessage()">
           Send
         </button>
       </div>
