@@ -8,6 +8,7 @@ const url = 'http://localhost:3000/api/queries';
 export class QueryService {
   constructor(private httpClient: HttpClient) { }
 
+  // posts message from customer side of application
   addQuery(query: Query): any {
     return this.httpClient.post(`${url}/`, query);
   }

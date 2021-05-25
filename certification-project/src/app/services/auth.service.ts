@@ -14,6 +14,7 @@ const headeroptions = {
 })
 export class AuthService implements OnInit {
   data: any = {};
+  // backend api urls
   api = 'http://localhost:3000/api/users';
   newsApi = 'http://localhost:3000/api/news';
   constructor(private httpClient: HttpClient) { }
@@ -31,30 +32,39 @@ export class AuthService implements OnInit {
     }
   }
 
+  // calling register method in backend
   registerUser(data, token): Observable<any> {
     return this.httpClient.post(this.api + '/register', data, { headers: { authorization: token } });
   }
+  // logs user in 
   loginUser(data): Observable<any> {
     return this.httpClient.post(this.api + '/login', data, headeroptions);
   }
 
+  // get user by id
   getSingleUser(id, token): Observable<any> {
     return this.httpClient.get(`${this.api}/${id}`, { headers: { authorization: token } })
   }
 
 
+  // post news 
   addNews(data, token): Observable<any> {
     return this.httpClient.post(this.newsApi + '/addNews', data, { headers: { authorization: token } });
   }
+  // get news
   getNewsList(): Observable<any> {
     return this.httpClient.get(this.newsApi + '/allNews');
   }
+
+  // delete news by id
   deleteNews(id, token): Observable<any> {
     return this.httpClient.delete(
       this.newsApi + '/deleteNews/' + id,
       { headers: { authorization: token } }
     );
   }
+
+  // get news by id
   getSingleNews(id): Observable<any> {
     return this.httpClient.get(
       this.newsApi + '/getSingleNews/' + id,
@@ -62,6 +72,8 @@ export class AuthService implements OnInit {
     );
   }
 
+
+  // update news by id 
   updateNews(id, data, token): Observable<any> {
     return this.httpClient.put(
       this.newsApi + '/updateNews/' + id,
@@ -69,6 +81,8 @@ export class AuthService implements OnInit {
       { headers: { authorization: token } }
     );
   }
+
+  // get latest 3 news articles.
   getThreeLatestNews(): Observable<any> {
     return this.httpClient.get(this.newsApi + '/threeLatestNews', headeroptions);
   }
