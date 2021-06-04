@@ -64,4 +64,24 @@ h2 {
     0 3px 3px rgba(0, 0, 0, 0.23);
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
 }
+
+/* .card .read-more:hover{
+  font-size: 10px;
+} */
+
+.card:hover{
+  box-shadow: 5px 5px 5px rgb(20, 20, 20);
+  transform:scale(1.2);
+}
+
+.card{
+  height: 400px;
+margin-left: 8%;
+border:1px solid black;
+transition:.3s;
+}
+
+.card-text {
+  white-space: normal;
+}
 /*# sourceMappingURL=styles.css.map */

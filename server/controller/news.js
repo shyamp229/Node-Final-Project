@@ -6,8 +6,7 @@ const validateNewsInput = require("../validations/news");
 // post saves new data to mongo db
 const addNews = (req, res) => {
     const { errors, isValid } = validateNewsInput(req.body);
-    // console.log(isValid);
-    // console.log(errors);
+    
     if (!isValid) {
         return res.status(400).json(errors);
     }
@@ -47,7 +46,7 @@ const updateNews = (req, res) => {
             if (!news) {
                 return res.status(404).json({ error: "News does not exist" });
             }
-            // console.log(JSON.stringify(news));
+            
             res.status(200).json(news);
         })
         .catch((e) => res.status(404).json(e));
@@ -56,8 +55,7 @@ const updateNews = (req, res) => {
 // delete: removes a data point in db
 const deleteNews = (req, res) => {
     const { id } = req.params;
-    // console.log(id);
-    // id = req.param.id
+    
     News.deleteOne({ _id: id })
         .then((data) => {
             if (data.deletedCount == 0) {
@@ -71,14 +69,14 @@ const deleteNews = (req, res) => {
 // gets one news by id
 const getSingleNews = (req, res) => {
     const { id } = req.params;
-    // console.log(id);
+    
     News.findOne({ _id: id })
         .then((news) => {
-            // console.log(news);
+            
             if (!news) {
                 return res.status(404).json({ error: "News does not exist" });
             }
-            // console.log(JSON.stringify(news));
+            
             res.status(200).json(news);
         })
         .catch((e) => res.status(404).json(e));
@@ -91,7 +89,7 @@ const allNews = (req, res) => {
             if (!news) {
                 return res.status(404).json({ error: "News does not exist" });
             }
-            // console.log(JSON.stringify(news));
+            
             res.status(200).json(news);
         })
         .catch((e) => res.status(404).json(e));
@@ -106,7 +104,7 @@ const threeLatestNews = (req, res) => {
             if (!news) {
                 return res.status(404).json({ error: "News does not exist" });
             }
-            // console.log(JSON.stringify(news));
+            
             res.status(200).json(news);
         })
         .catch((e) => res.status(404).json(e));

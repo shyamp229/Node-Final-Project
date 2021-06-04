@@ -6,22 +6,32 @@
 
 
 <div class="container-fluid padded-page">
-  <div class="row">
-    <div class="col">
-      <ul class="list-group list-group-flush news-list">
-        <div class="card-group">
-          <li class="list-group-item" *ngFor="let links of news['hits']">
-            <div class="card border-info" style="width: 25rem;">
-              <div class="card-body ">
-                <h5><a href="{{ links.url }}" class="card-title" target="_blank">{{ links.title | titlecase }}</a> </h5>
-                <br><br>
-                <h5 class="card-title">- {{ links.author | titlecase}}</h5>
+  <div class="row no-gutters">
+    <div class="card-deck-wrapper">
+    <div class="row card-deck">
+      <!-- <ul class="list-group list-group-flush"> -->
+        <div class="col mt-3" style="background-color: whitesmoke; margin-bottom:40px" *ngFor="let sport of news['articles']">
+          <!-- <li class="list-group-item"  style="background-color: whitesmoke;" *ngFor="let sport of news['articles']"> -->
+            <a [href]="sport.url" target="_blank">
+              <div class="card h-100" style="width: 18rem; ">        
+                <!-- <img [src]="{{sport.urlToImage}} ?  {{sport.urlToImage}}":"../../../assets/img/24_7.png" class="d-block  h-100 w-100"> -->
+                <!-- <img id="currentPhoto" src="sport.urlToImage" onerror="this.onerror=null; this.src='../../../assets/img/24_7.png'" alt="" width="100" height="120"> -->
+                <img [src]="sport.urlToImage" onerror="if (this.src != '../../../assets/img/24_7.png') this.src = '../../../assets/img/24_7.png';" class="d-block  h-100 w-100">
+                <div class="card-body ">
+                  <!-- <p class="card-text">
+                  {{ sport.title | titlecase }}
+                </p> -->
+                  <h5 class="card-text text-muted" >{{ sport.title | titlecase }} </h5>
+                  <br><br>
+                  <!-- <h5 class="card-title">- {{ sport.author | titlecase}}</h5> -->
+                </div>
               </div>
-            </div>
-          </li>
+            </a>
+          <!-- </li> -->
         </div>
-      </ul>
+      <!-- </ul> -->
     </div>
+  </div>
   </div>
 </div>
 <app-main-footer></app-main-footer>

@@ -27,6 +27,7 @@
     "angular-confirmation-popover": "^6.0.0",
     "angular-datatables": "^9.0.2",
     "bootstrap": "^4.5.2",
+    "caniuse-lite": "^1.0.30001230",
     "datatables.net": "^1.10.22",
     "datatables.net-dt": "^1.10.22",
     "jquery": "^3.5.1",

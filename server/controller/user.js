@@ -14,8 +14,6 @@ const key = require("../config/config");
 // login: check if user exists in our database then return a token else return error
 const login = (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
-    // console.log(isValid);
-    // console.log(errors);
     if (!isValid) {
         return res.status(400).json(errors);
     }
@@ -49,7 +47,7 @@ const login = (req, res) => {
                             });
                         }
                     );
-                    //return res.status(200).json(payload);
+                    
                 } else {
                     errors.password = "Password incorrect";
                     return res.status(400).json(errors);
@@ -62,8 +60,7 @@ const login = (req, res) => {
 // registers user into our mongo db but first authenicates the user registering is admin
 const register = (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
-    // console.log(isValid);
-    // console.log(errors);
+    
     if (!isValid) {
         return res.status(400).json(errors);
     }

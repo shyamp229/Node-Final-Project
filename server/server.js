@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dbName = require("./config/config").mongoURI;
-// console.log(dbName);
+
 
 const users = require("./routes/users");
 
@@ -11,7 +11,7 @@ const news = require("./routes/news");
 
 const queries = require("./routes/queries");
 
-// console.log("hello from server");
+
 
 const app = express(); // server for rest api purpose.
 const chatApp = express();

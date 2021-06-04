@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// const objectId = require("mongodb").ObjectID;
+
 const { isAuthenticated } = require('../controller/auth')
 const {
   addNews,

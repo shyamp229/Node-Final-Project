@@ -18,7 +18,7 @@ export class SportsService {
   constructor(private http: HttpClient) { }
 
   getNews(): Observable<any> {
-    let url = `https://hn.algolia.com/api/v1/search_by_date?query=sports&tags=story`;
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=ab74383d10324b5893ff62ac34ad75df`;
     return this.http.get(url);
 
 
